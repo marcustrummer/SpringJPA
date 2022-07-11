@@ -1,10 +1,18 @@
 package br.valtech.ecommerce.entity;
 
+import java.math.BigDecimal;
+
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
+import lombok.Getter;
+import lombok.Setter;
 
 @Entity
+@Getter
+@Setter
 public class Product {
 
 
@@ -19,12 +27,13 @@ public class Product {
 	private String description;
 
 	@NotNull(message = "The field price cannot be empty!")
-	private double price;
+	private BigDecimal price;
 
 	@NotNull(message = "The field size cannot be empty!")
-	private double size;
+	@Size(min = 1, max = 1, message = "size meust be  [P] /  [M] / [G]")
+	private String size;
 
-	private double material;
+	private String material;
 
 //	@ManyToMany(mappedBy = "products")
 //	List<Client> clients;
@@ -33,64 +42,6 @@ public class Product {
 //	List<Client> clients;
 	
 
-	// GETTERS AND SETTERS
 
-	public int getSku() {
-		return sku;
-	}
-
-//	public List<Client> getClients() {
-//		return clients;
-//	}
-//
-//	public void setClients(List<Client> clients) {
-//		this.clients = clients;
-//	}
-
-
-
-	public String getBrand() {
-		return brand;
-	}
-
-	public String getDescription() {
-		return description;
-	}
-
-	public double getPrice() {
-		return price;
-	}
-
-	public double getSize() {
-		return size;
-	}
-
-	public double getMaterial() {
-		return material;
-	}
-
-	public void setSku(int sku) {
-		this.sku = sku;
-	}
-
-	public void setBrand(String brand) {
-		this.brand = brand;
-	}
-
-	public void setDescription(String description) {
-		this.description = description;
-	}
-
-	public void setPrice(double price) {
-		this.price = price;
-	}
-
-	public void setSize(double size) {
-		this.size = size;
-	}
-
-	public void setMaterial(double material) {
-		this.material = material;
-	}
 
 }

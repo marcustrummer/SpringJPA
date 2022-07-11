@@ -17,6 +17,10 @@ import org.springframework.web.bind.annotation.RestController;
 import br.valtech.ecommerce.entity.Client;
 import br.valtech.ecommerce.service.ClientService;
 
+
+
+
+
 @RestController
 @RequestMapping ("/clients")
 @CrossOrigin (origins = "*", allowedHeaders = "*")
@@ -30,6 +34,10 @@ public class ClientController {
 	public ResponseEntity<List<Client>> getAllClients	() {
 		return ResponseEntity.ok(service.findAllClients());
 	}
+	
+	
+	
+	
 
 	@GetMapping("/{cpf}")
 	public ResponseEntity<Client> getByCpf(@PathVariable String cpf) {
@@ -47,11 +55,11 @@ public class ClientController {
 
 	@PutMapping("/update")
 	public ResponseEntity<Client> putClient(@RequestBody Client client) {
-
 		return service.updateClient(client)
 				.map(resp -> ResponseEntity.status(HttpStatus.OK).body(resp))
 				.orElse(ResponseEntity.status(HttpStatus.BAD_REQUEST).build());
 	}
-	
+
+
 	
 }
